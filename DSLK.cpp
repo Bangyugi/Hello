@@ -154,4 +154,5 @@ int main()
     popFront(head);
     popBack(head);
     review(head);
+    cout << "\n";
 }
