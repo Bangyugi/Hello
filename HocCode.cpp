@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <fstream>
 using namespace std;
 
 int UCLN(int a, int b)
@@ -20,31 +21,79 @@ int Lmao(vector<long long> &a, int l, int r)
     return ucln;
 }
 
-int main()
+void Hoc_tep_tin()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    int n, m, v, l, r, j;
-    int thaotac;
-    cin >> n >> m;
-    vector<long long> a(n);
-    for (int i = 0; i < n; i++)
+    int n, m, t;
+    cin >> t;
+    int a[t];
+    for (int i = 0; i < t; i++)
     {
         cin >> a[i];
     }
-    while (m--)
+    cin >> n >> m;
+    int b[n][m];
+    for (int i = 0; i < n; i++)
     {
-        cin >> thaotac;
-        if (thaotac == 1)
+        for (int j = 0; j < m; j++)
         {
-            cin >> j >> v;
-            a[j] = v;
-        }
-        else
-        {
-            cin >> l >> r;
-            int ucln = Lmao(a, l, r);
-            cout << ucln << "\n";
+            cin >> b[i][j];
         }
     }
+
+    // Ghi tep
+    fstream f("Hoc_tep_tin.txt", ios::out);
+    f << n << "\n";
+    for (int i = 0; i < n; i++)
+    {
+        f << a[i] << " ";
+    }
+    f << "\n\n";
+    f << n << " " << m << "\n";
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            f << b[i][j] << " ";
+        }
+        f << "\n";
+    }
+    f.close();
+
+    cout << "-------- DOC TEP --------\n";
+    // Doc tep
+    ifstream ff("Hoc_tep_tin.txt", ios::out);
+    int p, q;
+    ff >> p;
+    int *x = new int(p);
+    for (int i = 0; i < p; i++)
+    {
+        ff >> x[i];
+    }
+    ff >> p >> q;
+    int y[p][q];
+    for (int i = 0; i < p; i++)
+    {
+        cout << x[i] << " ";
+    }
+    cout << "\n";
+    for (int i = 0; i < p; i++)
+    {
+        for (int j = 0; j < q; j++)
+        {
+            ff >> y[i][j];
+        }
+    }
+    for (int i = 0; i < p; i++)
+    {
+        for (int j = 0; j < q; j++)
+        {
+            cout << y[i][j] << " ";
+        }
+        cout << "\n";
+    }
+}
+
+int main()
+{
+    Hoc_tep_tin();
 }
