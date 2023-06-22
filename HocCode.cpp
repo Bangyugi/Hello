@@ -122,6 +122,22 @@ void xoasoam(int *&a, int &n)
     }
 }
 
+void sapxeptangdan(int *&a, int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (*(a + i) < *(a + j))
+            {
+                int temp = *(a + i);
+                *(a + i) = *(a + j);
+                *(a + j) = temp;
+            }
+        }
+    }
+}
+
 void kiemtratx2()
 {
     int n;
@@ -135,30 +151,22 @@ void kiemtratx2()
     {
         cout << *(a + i) << " ";
     }
+
     fstream f("D:\\ABC2022.txt", ios::out);
     for (int i = 0; i < n; i++)
     {
         f << *(a + i) << " ";
     }
     f << "\n";
-    f.close();
     cout << "\n";
-    for (int i = 0; i < n - 1; i++)
-    {
-        for (int j = i + 1; j < n; j++)
-        {
-            if (*(a + i) < *(a + j))
-            {
-                int temp = *(a + i);
-                *(a + i) = *(a + j);
-                *(a + j) = temp;
-            }
-        }
-    }
+    f.close();
+
+    sapxeptangdan(a, n);
     for (int i = 0; i < n; i++)
     {
         cout << *(a + i) << " ";
     }
+
     fstream ff("D:\\ABC2022.txt", ios::app);
     for (int i = 0; i < n; i++)
     {
@@ -173,6 +181,7 @@ void kiemtratx2()
     {
         cout << "NO\n";
     }
+
     xoasoam(a, n);
     for (int i = 0; i < n; i++)
     {
